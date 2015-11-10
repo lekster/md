@@ -1,0 +1,420 @@
+2015-10-08 20:40:51 [10.192.163.44][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 10.192.163.44
+    in /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/backend/views/layouts/main.php:68
+    in /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/backend/controllers/SiteController.php:73
+2015-10-08 20:40:51 [10.192.163.44][-][-][info][application] $_GET = [
+    'r' => 'site/login'
+]
+
+$_COOKIE = [
+    '_ga' => 'GA1.2.1084006739.1438000317'
+    '_csrf' => '9349db3d8ae1a1713f822ad9276bf11eafd492f9a2cf8b340f4a51911efb8feaa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"39VKcvYqqHm6r_kSZ7ij7pjc7XVb_A-_\";}'
+    'PHPSESSID' => 'me4ulgcsbhjvrp51fbtn2sfc91'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__captcha/site/captcha' => 'iusepib'
+    '__captcha/site/captchacount' => 1
+    '__returnUrl' => '/admin'
+]
+
+$_SERVER = [
+    'SCRIPT_URL' => '/backend/web/index.php'
+    'SCRIPT_URI' => 'http://pbr-wifc-asm-test.asmirnov.vps7095.mtu.immo/backend/web/index.php'
+    'ROOT' => '/home/asmirnov/points/pbr-wifc-asm-test/pbr-wifc-asm-test/htdocs/'
+    'HTTP_HOST' => 'pbr-wifc-asm-test.asmirnov.vps7095.mtu.immo'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:41.0) Gecko/20100101 Firefox/41.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_COOKIE' => '_ga=GA1.2.1084006739.1438000317; _csrf=9349db3d8ae1a1713f822ad9276bf11eafd492f9a2cf8b340f4a51911efb8feaa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%2239VKcvYqqHm6r_kSZ7ij7pjc7XVb_A-_%22%3B%7D; PHPSESSID=me4ulgcsbhjvrp51fbtn2sfc91'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PATH' => '/sbin:/usr/sbin:/bin:/usr/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.2.15 (CentOS) Server at pbr-wifc-asm-test.asmirnov.vps7095.mtu.immo Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.2.15 (CentOS)'
+    'SERVER_NAME' => 'pbr-wifc-asm-test.asmirnov.vps7095.mtu.immo'
+    'SERVER_ADDR' => '192.168.7.95'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '10.192.163.44'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'root@localhost'
+    'SCRIPT_FILENAME' => '/home/asmirnov/points/pbr-wifc-asm-test/pbr-wifc-asm-test/htdocs/backend/web/index.php'
+    'REMOTE_PORT' => '61015'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=site%2Flogin'
+    'REQUEST_URI' => '/backend/web/index.php?r=site%2Flogin'
+    'SCRIPT_NAME' => '/backend/web/index.php'
+    'PHP_SELF' => '/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1444326051.431
+    'REQUEST_TIME' => 1444326051
+    'argv' => [
+        0 => 'r=site%2Flogin'
+    ]
+    'argc' => 1
+]
+2015-10-08 20:42:41 [10.192.163.44][-][-][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/vendor/yiisoft/yii2/db/Connection.php:579
+Stack trace:
+#0 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/vendor/yiisoft/yii2/db/Connection.php(579): PDO->__construct('mysql:host=loca...', 'root', '', NULL)
+#1 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/vendor/yiisoft/yii2/db/Connection.php(529): yii\db\Connection->createPdoInstance()
+#2 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/vendor/yiisoft/yii2/db/Connection.php(836): yii\db\Connection->open()
+#3 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/vendor/yiisoft/yii2/db/Connection.php(823): yii\db\Connection->getMasterPdo()
+#4 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/vendor/yiisoft/yii2/db/Schema.php(444): yii\db\Connection->getSlavePdo()
+#5 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/vendor/yiisoft/yii2/db/Connection.php(732): yii\db\Schema->quoteValue('242342')
+#6 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/vendor/yiisoft/yii2/db/Command.php(164): yii\db\Connection->quoteValue('242342')
+#7 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/vendor/yiisoft/yii2/db/Command.php(794): yii\db\Command->getRawSql()
+#8 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/vendor/yiisoft/yii2/db/Command.php(363): yii\db\Command->queryInternal('fetch', NULL)
+#9 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/vendor/yiisoft/yii2/db/Query.php(243): yii\db\Command->queryOne()
+#10 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/vendor/yiisoft/yii2/db/ActiveQuery.php(285): yii\db\Query->one(NULL)
+#11 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/vendor/yiisoft/yii2/db/BaseActiveRecord.php(101): yii\db\ActiveQuery->one()
+#12 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/common/models/User.php(82): yii\db\BaseActiveRecord::findOne(Array)
+#13 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/common/models/LoginForm.php(73): common\models\User::findByUsername('242342')
+#14 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/common/models/LoginForm.php(44): common\models\LoginForm->getUser()
+#15 [internal function]: common\models\LoginForm->validatePassword('password', NULL)
+#16 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/vendor/yiisoft/yii2/validators/InlineValidator.php(69): call_user_func(Array, 'password', NULL)
+#17 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/vendor/yiisoft/yii2/validators/Validator.php(240): yii\validators\InlineValidator->validateAttribute(Object(common\models\LoginForm), 'password')
+#18 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/vendor/yiisoft/yii2/base/Model.php(351): yii\validators\Validator->validateAttributes(Object(common\models\LoginForm), Array)
+#19 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/common/models/LoginForm.php(58): yii\base\Model->validate()
+#20 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/backend/controllers/SiteController.php(68): common\models\LoginForm->login()
+#21 [internal function]: backend\controllers\SiteController->actionLogin()
+#22 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#23 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/vendor/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#24 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/vendor/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('login', Array)
+#25 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/vendor/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('site/login', Array)
+#26 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#27 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/backend/web/index.php(18): yii\base\Application->run()
+#28 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/vendor/yiisoft/yii2/db/Connection.php:534
+Stack trace:
+#0 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/vendor/yiisoft/yii2/db/Connection.php(836): yii\db\Connection->open()
+#1 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/vendor/yiisoft/yii2/db/Connection.php(823): yii\db\Connection->getMasterPdo()
+#2 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/vendor/yiisoft/yii2/db/Schema.php(444): yii\db\Connection->getSlavePdo()
+#3 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/vendor/yiisoft/yii2/db/Connection.php(732): yii\db\Schema->quoteValue('242342')
+#4 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/vendor/yiisoft/yii2/db/Command.php(164): yii\db\Connection->quoteValue('242342')
+#5 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/vendor/yiisoft/yii2/db/Command.php(794): yii\db\Command->getRawSql()
+#6 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/vendor/yiisoft/yii2/db/Command.php(363): yii\db\Command->queryInternal('fetch', NULL)
+#7 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/vendor/yiisoft/yii2/db/Query.php(243): yii\db\Command->queryOne()
+#8 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/vendor/yiisoft/yii2/db/ActiveQuery.php(285): yii\db\Query->one(NULL)
+#9 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/vendor/yiisoft/yii2/db/BaseActiveRecord.php(101): yii\db\ActiveQuery->one()
+#10 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/common/models/User.php(82): yii\db\BaseActiveRecord::findOne(Array)
+#11 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/common/models/LoginForm.php(73): common\models\User::findByUsername('242342')
+#12 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/common/models/LoginForm.php(44): common\models\LoginForm->getUser()
+#13 [internal function]: common\models\LoginForm->validatePassword('password', NULL)
+#14 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/vendor/yiisoft/yii2/validators/InlineValidator.php(69): call_user_func(Array, 'password', NULL)
+#15 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/vendor/yiisoft/yii2/validators/Validator.php(240): yii\validators\InlineValidator->validateAttribute(Object(common\models\LoginForm), 'password')
+#16 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/vendor/yiisoft/yii2/base/Model.php(351): yii\validators\Validator->validateAttributes(Object(common\models\LoginForm), Array)
+#17 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/common/models/LoginForm.php(58): yii\base\Model->validate()
+#18 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/backend/controllers/SiteController.php(68): common\models\LoginForm->login()
+#19 [internal function]: backend\controllers\SiteController->actionLogin()
+#20 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/vendor/yiisoft/yii2/base/InlineAction.php(55): call_user_func_array(Array, Array)
+#21 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/vendor/yiisoft/yii2/base/Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#22 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/vendor/yiisoft/yii2/base/Module.php(455): yii\base\Controller->runAction('login', Array)
+#23 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/vendor/yiisoft/yii2/web/Application.php(84): yii\base\Module->runAction('site/login', Array)
+#24 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#25 /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/backend/web/index.php(18): yii\base\Application->run()
+#26 {main}
+Additional Information:
+
+2015-10-08 20:42:41 [10.192.163.44][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 10.192.163.44
+2015-10-08 20:42:41 [10.192.163.44][-][-][info][application] $_GET = [
+    'r' => 'site/login'
+]
+
+$_POST = [
+    '_csrf' => 'cEJZOHB5ZFo4egZ5FS0PChklDEI2KlMQBxgjUxMxIQA/Kh9CPgsDFg=='
+    'LoginForm' => [
+        'username' => '242342'
+        'password' => '2434242'
+        'rememberMe' => '1'
+    ]
+    'login-button' => ''
+]
+
+$_COOKIE = [
+    '_ga' => 'GA1.2.1084006739.1438000317'
+    '_csrf' => '37045c820a6309db06e38d519d9007a9bdee8f6bc5fb2f02acba52b7ba75e478a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"H8_AeTkPigUzFS7JwZzkcHEZOhFzNrgL\";}'
+    'PHPSESSID' => 'me4ulgcsbhjvrp51fbtn2sfc91'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__captcha/site/captcha' => 'iusepib'
+    '__captcha/site/captchacount' => 1
+    '__returnUrl' => '/admin'
+]
+
+$_SERVER = [
+    'SCRIPT_URL' => '/backend/web/index.php'
+    'SCRIPT_URI' => 'http://pbr-wifc-asm-test.asmirnov.vps7095.mtu.immo/backend/web/index.php'
+    'ROOT' => '/home/asmirnov/points/pbr-wifc-asm-test/pbr-wifc-asm-test/htdocs/'
+    'HTTP_HOST' => 'pbr-wifc-asm-test.asmirnov.vps7095.mtu.immo'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:41.0) Gecko/20100101 Firefox/41.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://pbr-wifc-asm-test.asmirnov.vps7095.mtu.immo/backend/web/index.php?r=site%2Flogin'
+    'HTTP_COOKIE' => '_ga=GA1.2.1084006739.1438000317; _csrf=37045c820a6309db06e38d519d9007a9bdee8f6bc5fb2f02acba52b7ba75e478a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22H8_AeTkPigUzFS7JwZzkcHEZOhFzNrgL%22%3B%7D; PHPSESSID=me4ulgcsbhjvrp51fbtn2sfc91'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'CONTENT_LENGTH' => '201'
+    'PATH' => '/sbin:/usr/sbin:/bin:/usr/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.2.15 (CentOS) Server at pbr-wifc-asm-test.asmirnov.vps7095.mtu.immo Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.2.15 (CentOS)'
+    'SERVER_NAME' => 'pbr-wifc-asm-test.asmirnov.vps7095.mtu.immo'
+    'SERVER_ADDR' => '192.168.7.95'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '10.192.163.44'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'root@localhost'
+    'SCRIPT_FILENAME' => '/home/asmirnov/points/pbr-wifc-asm-test/pbr-wifc-asm-test/htdocs/backend/web/index.php'
+    'REMOTE_PORT' => '61243'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => 'r=site%2Flogin'
+    'REQUEST_URI' => '/backend/web/index.php?r=site%2Flogin'
+    'SCRIPT_NAME' => '/backend/web/index.php'
+    'PHP_SELF' => '/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1444326161.214
+    'REQUEST_TIME' => 1444326161
+    'argv' => [
+        0 => 'r=site%2Flogin'
+    ]
+    'argc' => 1
+]
+2015-10-08 20:42:41 [10.192.163.44][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 10.192.163.44
+    in /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/backend/views/layouts/main.php:68
+    in /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/backend/controllers/SiteController.php:73
+2015-10-08 20:42:41 [10.192.163.44][-][-][info][application] $_GET = [
+    'r' => 'site/login'
+]
+
+$_COOKIE = [
+    '_ga' => 'GA1.2.1084006739.1438000317'
+    '_csrf' => '37045c820a6309db06e38d519d9007a9bdee8f6bc5fb2f02acba52b7ba75e478a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"H8_AeTkPigUzFS7JwZzkcHEZOhFzNrgL\";}'
+    'PHPSESSID' => 'me4ulgcsbhjvrp51fbtn2sfc91'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__captcha/site/captcha' => 'iusepib'
+    '__captcha/site/captchacount' => 1
+    '__returnUrl' => '/backend/web/sizzle.min.map'
+]
+
+$_SERVER = [
+    'SCRIPT_URL' => '/backend/web/index.php'
+    'SCRIPT_URI' => 'http://pbr-wifc-asm-test.asmirnov.vps7095.mtu.immo/backend/web/index.php'
+    'ROOT' => '/home/asmirnov/points/pbr-wifc-asm-test/pbr-wifc-asm-test/htdocs/'
+    'HTTP_HOST' => 'pbr-wifc-asm-test.asmirnov.vps7095.mtu.immo'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:41.0) Gecko/20100101 Firefox/41.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_COOKIE' => '_ga=GA1.2.1084006739.1438000317; _csrf=37045c820a6309db06e38d519d9007a9bdee8f6bc5fb2f02acba52b7ba75e478a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22H8_AeTkPigUzFS7JwZzkcHEZOhFzNrgL%22%3B%7D; PHPSESSID=me4ulgcsbhjvrp51fbtn2sfc91'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'PATH' => '/sbin:/usr/sbin:/bin:/usr/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.2.15 (CentOS) Server at pbr-wifc-asm-test.asmirnov.vps7095.mtu.immo Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.2.15 (CentOS)'
+    'SERVER_NAME' => 'pbr-wifc-asm-test.asmirnov.vps7095.mtu.immo'
+    'SERVER_ADDR' => '192.168.7.95'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '10.192.163.44'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'root@localhost'
+    'SCRIPT_FILENAME' => '/home/asmirnov/points/pbr-wifc-asm-test/pbr-wifc-asm-test/htdocs/backend/web/index.php'
+    'REMOTE_PORT' => '61246'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=site%2Flogin'
+    'REQUEST_URI' => '/backend/web/index.php?r=site%2Flogin'
+    'SCRIPT_NAME' => '/backend/web/index.php'
+    'PHP_SELF' => '/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1444326161.797
+    'REQUEST_TIME' => 1444326161
+    'argv' => [
+        0 => 'r=site%2Flogin'
+    ]
+    'argc' => 1
+]
+2015-10-08 20:44:13 [10.192.163.44][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 10.192.163.44
+    in /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/backend/views/layouts/main.php:68
+    in /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/backend/controllers/SiteController.php:73
+2015-10-08 20:44:13 [10.192.163.44][-][-][info][application] $_GET = [
+    'r' => 'site/login'
+]
+
+$_COOKIE = [
+    '_ga' => 'GA1.2.1084006739.1438000317'
+    '_csrf' => '37045c820a6309db06e38d519d9007a9bdee8f6bc5fb2f02acba52b7ba75e478a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"H8_AeTkPigUzFS7JwZzkcHEZOhFzNrgL\";}'
+    'PHPSESSID' => 'me4ulgcsbhjvrp51fbtn2sfc91'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__captcha/site/captcha' => 'iusepib'
+    '__captcha/site/captchacount' => 1
+    '__returnUrl' => '/backend/web/sizzle.min.map'
+]
+
+$_SERVER = [
+    'SCRIPT_URL' => '/backend/web/index.php'
+    'SCRIPT_URI' => 'http://pbr-wifc-asm-test.asmirnov.vps7095.mtu.immo/backend/web/index.php'
+    'ROOT' => '/home/asmirnov/points/pbr-wifc-asm-test/pbr-wifc-asm-test/htdocs/'
+    'HTTP_HOST' => 'pbr-wifc-asm-test.asmirnov.vps7095.mtu.immo'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:41.0) Gecko/20100101 Firefox/41.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_COOKIE' => '_ga=GA1.2.1084006739.1438000317; _csrf=37045c820a6309db06e38d519d9007a9bdee8f6bc5fb2f02acba52b7ba75e478a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22H8_AeTkPigUzFS7JwZzkcHEZOhFzNrgL%22%3B%7D; PHPSESSID=me4ulgcsbhjvrp51fbtn2sfc91'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PATH' => '/sbin:/usr/sbin:/bin:/usr/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.2.15 (CentOS) Server at pbr-wifc-asm-test.asmirnov.vps7095.mtu.immo Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.2.15 (CentOS)'
+    'SERVER_NAME' => 'pbr-wifc-asm-test.asmirnov.vps7095.mtu.immo'
+    'SERVER_ADDR' => '192.168.7.95'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '10.192.163.44'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'root@localhost'
+    'SCRIPT_FILENAME' => '/home/asmirnov/points/pbr-wifc-asm-test/pbr-wifc-asm-test/htdocs/backend/web/index.php'
+    'REMOTE_PORT' => '61422'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=site%2Flogin'
+    'REQUEST_URI' => '/backend/web/index.php?r=site%2Flogin'
+    'SCRIPT_NAME' => '/backend/web/index.php'
+    'PHP_SELF' => '/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1444326253.631
+    'REQUEST_TIME' => 1444326253
+    'argv' => [
+        0 => 'r=site%2Flogin'
+    ]
+    'argc' => 1
+]
+2015-10-08 20:44:16 [10.192.163.44][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 10.192.163.44
+    in /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/backend/views/layouts/main.php:68
+    in /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/backend/controllers/SiteController.php:73
+2015-10-08 20:44:16 [10.192.163.44][-][-][info][application] $_GET = [
+    'r' => 'site/login'
+]
+
+$_COOKIE = [
+    '_ga' => 'GA1.2.1084006739.1438000317'
+    '_csrf' => '37045c820a6309db06e38d519d9007a9bdee8f6bc5fb2f02acba52b7ba75e478a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"H8_AeTkPigUzFS7JwZzkcHEZOhFzNrgL\";}'
+    'PHPSESSID' => 'me4ulgcsbhjvrp51fbtn2sfc91'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__captcha/site/captcha' => 'iusepib'
+    '__captcha/site/captchacount' => 1
+    '__returnUrl' => '/backend/web/sizzle.min.map'
+]
+
+$_SERVER = [
+    'SCRIPT_URL' => '/backend/web/index.php'
+    'SCRIPT_URI' => 'http://pbr-wifc-asm-test.asmirnov.vps7095.mtu.immo/backend/web/index.php'
+    'ROOT' => '/home/asmirnov/points/pbr-wifc-asm-test/pbr-wifc-asm-test/htdocs/'
+    'HTTP_HOST' => 'pbr-wifc-asm-test.asmirnov.vps7095.mtu.immo'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:41.0) Gecko/20100101 Firefox/41.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://pbr-wifc-asm-test.asmirnov.vps7095.mtu.immo/backend/web/index.php?r=site%2Flogin'
+    'HTTP_COOKIE' => '_ga=GA1.2.1084006739.1438000317; _csrf=37045c820a6309db06e38d519d9007a9bdee8f6bc5fb2f02acba52b7ba75e478a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22H8_AeTkPigUzFS7JwZzkcHEZOhFzNrgL%22%3B%7D; PHPSESSID=me4ulgcsbhjvrp51fbtn2sfc91'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PATH' => '/sbin:/usr/sbin:/bin:/usr/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.2.15 (CentOS) Server at pbr-wifc-asm-test.asmirnov.vps7095.mtu.immo Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.2.15 (CentOS)'
+    'SERVER_NAME' => 'pbr-wifc-asm-test.asmirnov.vps7095.mtu.immo'
+    'SERVER_ADDR' => '192.168.7.95'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '10.192.163.44'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'root@localhost'
+    'SCRIPT_FILENAME' => '/home/asmirnov/points/pbr-wifc-asm-test/pbr-wifc-asm-test/htdocs/backend/web/index.php'
+    'REMOTE_PORT' => '61434'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=site%2Flogin'
+    'REQUEST_URI' => '/backend/web/index.php?r=site%2Flogin'
+    'SCRIPT_NAME' => '/backend/web/index.php'
+    'PHP_SELF' => '/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1444326256.773
+    'REQUEST_TIME' => 1444326256
+    'argv' => [
+        0 => 'r=site%2Flogin'
+    ]
+    'argc' => 1
+]
+2015-10-08 20:44:28 [10.192.163.44][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 10.192.163.44
+    in /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/backend/views/layouts/main.php:68
+    in /home/asmirnov/workspace/pbr-wifc-asm-test/yii_adv/backend/controllers/SiteController.php:73
+2015-10-08 20:44:28 [10.192.163.44][-][-][info][application] $_GET = [
+    'r' => 'site/login'
+]
+
+$_COOKIE = [
+    '_ga' => 'GA1.2.1084006739.1438000317'
+    '_csrf' => '37045c820a6309db06e38d519d9007a9bdee8f6bc5fb2f02acba52b7ba75e478a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"H8_AeTkPigUzFS7JwZzkcHEZOhFzNrgL\";}'
+    'PHPSESSID' => 'me4ulgcsbhjvrp51fbtn2sfc91'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__captcha/site/captcha' => 'iusepib'
+    '__captcha/site/captchacount' => 1
+    '__returnUrl' => '/backend/web/sizzle.min.map'
+]
+
+$_SERVER = [
+    'SCRIPT_URL' => '/backend/web/index.php'
+    'SCRIPT_URI' => 'http://pbr-wifc-asm-test.asmirnov.vps7095.mtu.immo/backend/web/index.php'
+    'ROOT' => '/home/asmirnov/points/pbr-wifc-asm-test/pbr-wifc-asm-test/htdocs/'
+    'HTTP_HOST' => 'pbr-wifc-asm-test.asmirnov.vps7095.mtu.immo'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:41.0) Gecko/20100101 Firefox/41.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://pbr-wifc-asm-test.asmirnov.vps7095.mtu.immo/backend/web/index.php?r=site%2Flogin'
+    'HTTP_COOKIE' => '_ga=GA1.2.1084006739.1438000317; _csrf=37045c820a6309db06e38d519d9007a9bdee8f6bc5fb2f02acba52b7ba75e478a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22H8_AeTkPigUzFS7JwZzkcHEZOhFzNrgL%22%3B%7D; PHPSESSID=me4ulgcsbhjvrp51fbtn2sfc91'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PATH' => '/sbin:/usr/sbin:/bin:/usr/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.2.15 (CentOS) Server at pbr-wifc-asm-test.asmirnov.vps7095.mtu.immo Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.2.15 (CentOS)'
+    'SERVER_NAME' => 'pbr-wifc-asm-test.asmirnov.vps7095.mtu.immo'
+    'SERVER_ADDR' => '192.168.7.95'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '10.192.163.44'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'root@localhost'
+    'SCRIPT_FILENAME' => '/home/asmirnov/points/pbr-wifc-asm-test/pbr-wifc-asm-test/htdocs/backend/web/index.php'
+    'REMOTE_PORT' => '61467'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=site%2Flogin'
+    'REQUEST_URI' => '/backend/web/index.php?r=site%2Flogin'
+    'SCRIPT_NAME' => '/backend/web/index.php'
+    'PHP_SELF' => '/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1444326268.588
+    'REQUEST_TIME' => 1444326268
+    'argv' => [
+        0 => 'r=site%2Flogin'
+    ]
+    'argc' => 1
+]

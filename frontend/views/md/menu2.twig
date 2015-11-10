@@ -1,0 +1,398 @@
+<html>
+  <head>
+
+
+
+  </head>
+  <body>
+  <h2>Account successfully created!</h2>
+
+
+{% for category in RESULT.RESULT %}
+ <pre>  {{ category.ID }} </pre>
+{% endfor %}
+
+   <div id="home" class="current">
+      {% if ONE_ITEM_MODE != 1 %}
+        {% if PARENT_TITLE != "" %}
+            <div data-role="header" data-theme= {% if SETTINGS_THEME == 'dark' %} "a" {% else %} "c"  {% endif %}>
+            {% if IFRAME_MODE != 1 %}
+
+              <h1 id="label_{{ PARENT_ID }}">{% if PARENT_TITLE != "" %} {{ PARENT_TITLE }} {% else %} MajorDoMo {% endif %} </h1>
+              {% if PARENT_ID != "" %}
+                <a class="back" href= {% if PARENT_PARENT_ID != 0 %} "/frontend/web/md/menu/?id={{ PARENT_PARENT_ID }}" {% else %} "/frontend/web/md/menu" {% endif %}>Назад</a>
+              {% endif %}
+            {% endif %}
+            </div>
+        {% endif %}
+
+        {% if PARENT_ID != "" %}
+          {% if PARENT_AUTO_UPDATE != "0" %}
+            <script language="javascript">
+             var label{{ PARENT_ID }}_timer;
+             function updateLabel{{ PARENT_ID }}_Ready(id, data) {
+              var elem=document.getElementById('label_{{ PARENT_ID }}');
+              elem.innerHTML=data;
+              return false;
+             }
+             function updateLabel{{ PARENT_ID }}() {
+              clearTimeout(label{{ PARENT_ID }}]_timer);
+              var url="?ajax=1&op=get_label";
+              AJAXRequest(url+'&item_id={{ PARENT_ID }}', 'updateLabel{{ PARENT_ID }}_Ready', '');
+              label{{ PARENT_ID }}_timer=setTimeout('updateLabel{{ PARENT_ID }}()', ({{PARENT_AUTO_UPDATE}}*1000));
+              return false;
+             }
+             label{{ PARENT_ID }}_timer=setTimeout('updateLabel{{ PARENT_ID }}()', ({{PARENT_AUTO_UPDATE}}*1000));
+            </script>
+          {% endif %}
+        {% endif %}
+
+     {% endif %}
+
+  <div data-role="content">
+
+{% if RESULT.RESULT %}
+
+  <!-- search results (list) -->
+  {% if ONE_ITEM_MODE!="1" %}
+    <ul data-role="listview" data-inset="true">
+ {% endif %}
+
+  {% for elem in RESULT.RESULT %}
+
+
+      {% if elem.TYPE == "" or elem.TYPE== "command" or elem.TYPE=="window" or elem.TYPE=="url" %}
+          <li{% if elem.VISIBLE_DELAY!="0" %} class='visible_delay'{% endif %} id='item{{elem.ID}}'>
+          <a
+           {% if elem.RESULT %}
+             href="#" 
+             onClick="return menuClicked('{{elem.ID}}', '{{elem.PARENT_ID}}', '{{elem.SUB_LIST}}', '{{elem.WINDOW}}', '{{elem.TITLE}}', '{{elem.COMMAND}}',
+             '{{elem.URL}}'
+             {# !!!!!!!!!!!! {% if elem.TYPE="window"%}, '{{elem.WIDTH}}', '{{elem.HEIGHT}}'{% else %},0,0{% endif %});" #}
+             {% else %}
+              href="/frontend/web/md/menu?id={{elem.ID}}"
+           {% endif %}
+          >
+          {% if elem.ICON!="" %}
+            <img src="/cms/icons/{{elem.ICON}}" alt="" class="ui-li-icon" style="left:4px;top:0.4em;max-height:32px;max-width:32px;height:32px;width:32px;">
+          {% endif %}
+          <span id="label_{{elem.ID}}">{{elem.TITLE}}</span></a>
+          {% if elem.RESULT %}
+              <span class="ui-li-count">{{elem.RESULT}}</span>
+          {% endif %}
+
+          </li>
+      {% endif %}
+
+      {% if elem.TYPE=="switch" %}
+          <li data-role="fieldcontain"{% if elem.VISIBLE_DELAY!="0" %}  class='visible_delay'{% endif %} id='item{{elem.ID}}'>
+
+          <script language="javascript">
+           var item{{elem.ID}}_timer=0;
+           function changedValue{{elem.ID}}() {
+            //clearTimeout(item{{elem.ID}}_timer);
+            var elem=document.getElementById('menu{{elem.ID}}_v');
+            itemValueChanged("{{elem.ID}}", elem.value);
+            //item{{elem.ID}}_timer=setTimeout('itemValueChanged("{{elem.ID}}", "'+elem.value+'")', 500);
+            return false;
+           }
+          </script>
+
+
+                  <label for="menu{{elem.ID}}_v"><span id="label_{{elem.ID}}">{{elem.TITLE}}</span><span id="processing_{{elem.ID}}"></span></label>
+                  <select name="menu{{elem.ID}}_v" id="menu{{elem.ID}}_v" data-role="slider"  onChange="changedValue{{elem.ID}}();">
+                          <option value="0"{% if elem.CUR_VALUE !="1" %} selected{% endif %}>Выкл</option>
+                          <option value="1"{% if elem.CUR_VALUE=="1"%} selected{% endif %}>Вкл</option>
+                  </select> 
+
+                  <!--#
+          <span style="float:right">
+          <a href="#" style="display:inline;width:30px;" onClick="return switchValue{{elem.ID}}();"><img src="/img/switch_[#if CUR_VALUE="1"#]on[#else#]off[#endif#].png" id="img{{elem.ID}}" border="0"></a>
+          </span>
+          <input type="hidden" id="menu{{elem.ID}}_v" name="menu{{elem.ID}}_value" value="[#CUR_VALUE#]">
+          #-->
+          </li>
+      {% endif %}
+
+      {% if elem.TYPE=="custom" %}
+        <li data-role="fieldcontain"{% if elem.VISIBLE_DELAY!="0" %}  class='visible_delay'{% endif %} id='item{{elem.ID}}'>
+        <div id="label_{{elem.ID}}">{{ elem.DATA|raw }}</div>
+        </li>
+      {% endif %}
+
+      {% if elem.TYPE=="selectbox" %}
+          <script language="javascript">
+           var item{{elem.ID}}_timer=0;
+           function changedValue{{elem.ID}}() {
+            //clearTimeout(item{{elem.ID}}_timer);
+            var elem=document.getElementById('menu{{elem.ID}}_v');
+            itemValueChanged("{{elem.ID}}", elem.value);
+            //item{{elem.ID}}_timer=setTimeout('itemValueChanged("{{elem.ID}}", "'+elem.value+'")', 500);
+            return false;
+           }
+          </script>
+          <li data-role="fieldcontain"{% if elem.VISIBLE_DELAY!="0" %}  class='visible_delay'{% endif %} id='item{{elem.ID}}'>
+          <label for="menu{{elem.ID}}_v" class="select"><span id="label_{{elem.ID}}">{{elem.TITLE}}</span><span id="processing_{{elem.ID}}"></span></label>
+
+          <select name="menu{{elem.ID}}_v" id="menu{{elem.ID}}_v" onChange="changedValue{{elem.ID}}();">
+           [#begin OPTIONS#]
+           <option value="[#VALUE#]"[#if SELECTED#] selected[#endif#]>{{elem.TITLE}}
+           [#end OPTIONS#]
+          </select>
+          </li>
+      {% endif %}
+
+
+      {% if elem.TYPE=="timebox" %}
+          <script language="javascript">
+           var item{{elem.ID}}_timer=0;
+           function changedValue{{elem.ID}}() {
+            clearTimeout(item{{elem.ID}}_timer);
+            var elem1=document.getElementById('menu{{elem.ID}}_v1');
+            var elem2=document.getElementById('menu{{elem.ID}}_v2');
+            item{{elem.ID}}_timer=setTimeout('itemValueChanged("{{elem.ID}}", "'+elem1.value+':'+elem2.value+'")', 500);
+            return false;
+           }
+          </script>
+          <li data-role="fieldcontain"{% if elem.VISIBLE_DELAY!="0" %}  class='visible_delay'{% endif %} id='item{{elem.ID}}'>
+          <label for="menu{{elem.ID}}_v" class="select"><span id="label_{{elem.ID}}">{{elem.TITLE}}</span><span id="processing_{{elem.ID}}"></span></label>
+          <fieldset data-role="controlgroup" data-type="horizontal"> 
+          <select name="menu{{elem.ID}}_v1" id="menu{{elem.ID}}_v1" onChange="changedValue{{elem.ID}}();">
+           [#begin OPTIONS1#]
+           <option value="[#VALUE#]"[#if SELECTED="1"#] selected[#endif#]>[#VALUE#]
+           [#end OPTIONS1#]
+          </select>
+          <select name="menu{{elem.ID}}_v2" id="menu{{elem.ID}}_v2" onChange="changedValue{{elem.ID}}();">
+           [#begin OPTIONS2#]
+           <option value="[#VALUE#]"[#if SELECTED="1"#] selected[#endif#]>[#VALUE#]
+           [#end OPTIONS2#]
+          </select>
+          </fieldset>
+
+
+          </li>
+      {% endif %}
+
+      {% if elem.TYPE=="plusminus" %}
+          <script language="javascript">
+           var item{{elem.ID}}_timer=0;
+           function increaseValue{{elem.ID}}() {
+            var elem=document.getElementById('menu{{elem.ID}}_v');
+            var v=parseInt(elem.value);
+            if ((v+[#STEP_VALUE#])<=[#MAX_VALUE#]) {
+             elem.value=v+[#STEP_VALUE#];
+             clearTimeout(item{{elem.ID}}_timer);
+             item{{elem.ID}}_timer=setTimeout('itemValueChanged("{{elem.ID}}", "'+elem.value+'")', 500);
+            }
+            return false;
+           }
+           function decreaseValue{{elem.ID}}() {
+            var elem=document.getElementById('menu{{elem.ID}}_v');
+            var v=parseInt(elem.value);
+            if ((v-[#STEP_VALUE#])>=[#MIN_VALUE#]) {
+             elem.value=v-[#STEP_VALUE#];
+             clearTimeout(item{{elem.ID}}_timer);
+             item{{elem.ID}}_timer=setTimeout('itemValueChanged("{{elem.ID}}", "'+elem.value+'")', 500);
+            }
+            return false;
+           }
+          </script>
+          <li data-role="fieldcontain"{% if elem.VISIBLE_DELAY!="0" %}  class='visible_delay'{% endif %} id='item{{elem.ID}}'>
+          <span id="label_{{elem.ID}}">{{elem.TITLE}}</span><span id="processing_{{elem.ID}}"></span>
+
+          <div data-inline="true" data-role="fieldcontain">
+           <a href="#" data-role="button" onClick="return decreaseValue{{elem.ID}}();" data-inline="true">-</a>
+           <input type="text" id="menu{{elem.ID}}_v" name="menu{{elem.ID}}_value" value="[#CUR_VALUE#]" size="5" data-inline="true" style="width:50px">
+           <a href="#" data-role="button" onClick="return increaseValue{{elem.ID}}();" data-inline="true">+</a>
+          </div>
+          </li>
+      {% endif %}
+
+      {% if elem.TYPE=="sliderbox" %}
+          <script language="javascript">
+           var item{{elem.ID}}_timer=0;
+           function changedValue{{elem.ID}}() {
+            clearTimeout(item{{elem.ID}}_timer);
+            var elem=document.getElementById('menu{{elem.ID}}_v');
+            item{{elem.ID}}_timer=setTimeout('itemValueChanged("{{elem.ID}}", "'+elem.value+'")', 500);
+            return false;
+           }
+          </script>
+          <li data-role="fieldcontain"{% if elem.VISIBLE_DELAY!="0" %}  class='visible_delay'{% endif %} id='item{{elem.ID}}'>
+          <span id="label_{{elem.ID}}">{{elem.TITLE}}</span><span id="processing_{{elem.ID}}"></span>
+
+          <div data-inline="true" data-role="fieldcontain">
+           <input type="range" id="menu{{elem.ID}}_v" data-inline="true" name="menu{{elem.ID}}_value" value="[#CUR_VALUE#]" min="[#MIN_VALUE#]" max="[#MAX_VALUE#]" step="[#STEP_VALUE#]"  onChange="changedValue{{elem.ID}}();"/>
+          </div>
+          </li>
+      {% endif %}
+
+
+      {% if elem.TYPE=="textbox" %}
+          <script language="javascript">
+           var item{{elem.ID}}_timer=0;
+           function changedValue{{elem.ID}}_delay() {
+            clearTimeout(item{{elem.ID}}_timer);
+            var elem=document.getElementById('menu{{elem.ID}}_v');
+            item{{elem.ID}}_timer=setTimeout('itemValueChanged("{{elem.ID}}", "'+elem.value+'")', 500);
+            return false;
+           }
+          </script>
+          <li data-role="fieldcontain"{% if elem.VISIBLE_DELAY!="0" %}  class='visible_delay'{% endif %} id='item{{elem.ID}}'>
+          <span id="label_{{elem.ID}}">{{elem.TITLE}}</span><span id="processing_{{elem.ID}}"></span>
+
+          <div data-inline="true" data-role="fieldcontain">
+           <input type="text" id="menu{{elem.ID}}_v" name="menu{{elem.ID}}_value" value="{{elem.CUR_VALUE}}" data-inline="true" onChange="changedValue{{elem.ID}}_delay()" onKeyUp="changedValue{{elem.ID}}_delay();">
+          </div>
+          </li>
+
+     {% endif %}
+
+
+      {% if elem.TYPE == "label" %}
+          <li data-role="list-divider"{% if elem.VISIBLE_DELAY!="0" %}  class='visible_delay'{% endif %} id='item{{elem.ID}}'>
+          <!--#
+          [#if ICON!=""#]<img src="/cms/icons/[#ICON#]" border="0">[#endif#]
+          #-->
+          <span id="label_{{elem.ID}}">{{elem.TITLE}}</span>
+          </li>
+      {% endif %}
+
+     {% if elem.TYPE == "button" %}
+          <a href="#" onClick="return itemValueChanged('{{elem.ID}}', 'clicked');" data-role="button" {% if elem.INLINE=="1" %} data-inline="true"{% endif %}><span id="label_{{elem.ID}}">{{elem.TITLE}}</span><span id="processing_{{elem.ID}}"></span></a>
+          <!--#
+          <table border="0" cellspacing="0" cellpadding="0" width="100%">
+           <tr>
+            <td><img src="/img/blackBtn_left.png" border="0"></td>
+            [#if ICON!=""#]
+            <td background="/img/blackBtn_center.png"><img src="/cms/icons/[#ICON#]" border="0" style="float:left;margin-right:10px;padding:0px"></td>
+            [#endif#]
+            <td  width="100%" background="/img/blackBtn_center.png">
+            <a href="#" onClick="return itemValueChanged('{{elem.ID}}', 'clicked');" style="font-weight:bold" id="label_{{elem.ID}}">{{elem.TITLE}}</a></td>
+            <td><img src="/img/blackBtn_right.png" border="0"></td>
+           </tr>
+          </table>
+          #-->
+      {% endif %}
+
+
+      {% if elem.AUTO_UPDATE!="0" %}
+        <script language="javascript">
+         var label{{elem.ID}}_timer;
+         function updateLabel{{elem.ID}}_Ready(id, data) {
+          var elem=document.getElementById('label_{{elem.ID}}');
+          elem.innerHTML=data;
+          return false;
+         }
+
+         function updateValue{{elem.ID}}_Ready(id, data) {
+          {% if elem.TYPE=="textbox" %}
+            if ($('#menu{{elem.ID}}_v').val()!=data) {
+             $('#menu{{elem.ID}}_v').val(data);
+            }
+          {% endif %}
+
+          {% if elem.TYPE=="switch" or elem.TYPE=="sliderbox" %}
+           if ($('#menu{{elem.ID}}_v').val()!=data) {
+            $('#menu{{elem.ID}}_v').val(data);
+            $('#menu{{elem.ID}}_v').slider('refresh');
+           }
+          {% endif %}
+
+          return false;
+         }
+
+
+         function updateLabel{{elem.ID}}() {
+          clearTimeout(label{{elem.ID}}_timer);
+          var url="?ajax=1&op=get_label";
+          AJAXRequest(url+'&item_id={{elem.ID}}', 'updateLabel{{elem.ID}}_Ready', '');
+
+          {% if elem.TYPE=="switch" or elem.TYPE=="textbox" or elem.TYPE=="sliderbox" %}
+          var url2="?ajax=1&op=get_value";
+          AJAXRequest(url2+'&item_id={{elem.ID}}', 'updateValue{{elem.ID}}_Ready', '');
+         {% endif %}
+
+          label{{elem.ID}}_timer=setTimeout('updateLabel{{elem.ID}}()', ({{elem.AUTO_UPDATE}}*1000));
+          return false;
+         }
+         label{{elem.ID}}_timer=setTimeout('updateLabel{{elem.ID}}()', ({{elem.AUTO_UPDATE}}*1000));
+        </script>
+      {% endif %}
+
+      {% endfor %}
+
+  {% if ONE_ITEM_MODE!="1" %}
+    </ul>
+  {% endif %}
+  <!-- / search results (list) -->
+  {% else %}
+    <p>
+    <font color="red">Нет записей</font>
+    </p>
+{% endif %}
+
+</div>
+
+{% if VISIBLE_DELAYS %}
+  <script language="javascript">
+   var vd_timer;
+   var currentItem=0;
+   var currentNum=0;
+   function visible_delay_carusel() {
+    clearTimeout(vd_timer);
+    var delay=10000;
+    var i=0;
+
+    if (currentItem!=0) {
+     $('#item'+currentItem).hide();
+    }
+    [#begin RESULT#]
+     [#if VISIBLE_DELAY!="0"#]
+      if (currentNum==i) {
+       currentItem={{elem.ID}};
+       delay=[#VISIBLE_DELAY#]*1000;
+      }
+      i++;
+     [#endif#]
+    [#end RESULT#]
+    currentNum++;
+    if (currentNum>=[#VISIBLE_DELAYS#]) {
+     currentNum=0;
+    }
+    if (currentItem!=0) {
+     $('#item'+currentItem).show();
+    }
+    vd_timer=setTimeout('visible_delay_carusel();', delay)
+    return false;
+   }
+
+   $( document ).bind( "pageinit", function( event, data ){
+      $('.visible_delay').hide();
+      visible_delay_carusel();
+  ///    alert('zz');
+  });
+  </script>
+{% endif %}   
+
+
+
+
+
+  <p>Hello {{ name }}</p>
+
+  <p>Thank you for registering with us. Your account details are as follows: </p>
+
+  <p style="margin-left: 10px">
+  Username: {{ username }} <br/>
+  Password: {{ password }}
+  </p>
+
+
+
+
+  <p>You've already been logged in, so go on in and have some fun!</p>
+  </body>
+</html>
+
+https://github.com/yiisoft/yii2-twig/blob/master/docs/guide/additional-configuration.md
