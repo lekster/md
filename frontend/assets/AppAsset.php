@@ -24,11 +24,12 @@ class AppAsset extends AssetBundle
         'js/md/jquerymobile/jquery.mobile-1.2.0.min.css',
     ];
     public $js = [
-        'js/md/jquery.smartmenus.js',
+        'js/jquery.smartmenus.js',
         'js/md/jquerymobile/jquery-1.8.3.min.js',
         'js/md/jquerymobile/custom-scripting.js',
         'js/md/jquerymobile/jquery.mobile-1.2.0.min.js',
-        'js/md/js/jquery.jplayer.min.js',
+        'js/md/jquery.jplayer.min.js',
+        'js/md/scripts.js',
 
     ];
     public $depends = [
@@ -36,11 +37,3 @@ class AppAsset extends AssetBundle
         'yii\bootstrap\BootstrapAsset',
     ];
 }
-
-/*
-<link rel="stylesheet" href="/jquerymobile/jquery.mobile-1.2.0.min.css" />
-<script type="text/javascript" src="/jquerymobile/jquery-1.8.3.min.js"></script>
-<script type="text/javascript" src="/jquerymobile/custom-scripting.js"></script>               
-<script type="text/javascript" src="/jquerymobile/jquery.mobile-1.2.0.min.js"></script>
-<script type="text/javascript" src="/js/jquery.jplayer.min.js"></script>
-*/

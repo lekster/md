@@ -1,11 +1,6 @@
-<html>
-  <head>
 
-
-
-  </head>
-  <body>
   <h2>Account successfully created!</h2>
+
 
 
 {% for category in RESULT.RESULT %}
@@ -87,23 +82,21 @@
       {% if elem.TYPE=="switch" %}
           <li data-role="fieldcontain"{% if elem.VISIBLE_DELAY!="0" %}  class='visible_delay'{% endif %} id='item{{elem.ID}}'>
 
-          <script language="javascript">
-           var item{{elem.ID}}_timer=0;
-           function changedValue{{elem.ID}}() {
-            //clearTimeout(item{{elem.ID}}_timer);
-            var elem=document.getElementById('menu{{elem.ID}}_v');
-            itemValueChanged("{{elem.ID}}", elem.value);
-            //item{{elem.ID}}_timer=setTimeout('itemValueChanged("{{elem.ID}}", "'+elem.value+'")', 500);
-            return false;
-           }
-          </script>
 
 
-                  <label for="menu{{elem.ID}}_v"><span id="label_{{elem.ID}}">{{elem.TITLE}}</span><span id="processing_{{elem.ID}}"></span></label>
-                  <select name="menu{{elem.ID}}_v" id="menu{{elem.ID}}_v" data-role="slider"  onChange="changedValue{{elem.ID}}();">
+            <table>
+            <tr>
+              <td><label for="menu{{elem.ID}}_v"><span id="label_{{elem.ID}}">{{elem.TITLE}}</span><span id="processing_{{elem.ID}}"></span></label></td>
+              <td>
+                <select name="menu{{elem.ID}}_v" id="menu{{elem.ID}}_v" data-role="slider"  onChange="changedValueSW({{elem.ID}});">
                           <option value="0"{% if elem.CUR_VALUE !="1" %} selected{% endif %}>Выкл</option>
                           <option value="1"{% if elem.CUR_VALUE=="1"%} selected{% endif %}>Вкл</option>
                   </select> 
+              </td>
+            </tr>
+          </table>
+                  
+                  
 
                   <!--#
           <span style="float:right">
@@ -392,7 +385,5 @@
 
 
   <p>You've already been logged in, so go on in and have some fun!</p>
-  </body>
-</html>
 
 https://github.com/yiisoft/yii2-twig/blob/master/docs/guide/additional-configuration.md

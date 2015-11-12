@@ -23,8 +23,8 @@ $this->params['breadcrumbs'][] = $this->title;
 	</tr>
 <tr>
   <td valign="top" width="350" id="leftPanel">
-  <iframe src="http://pbr-wifc-btp.asmirnov.fenrir.immo/menu.html" width="350" height="450" id="navFrame" border="0" frameborder=0 framespacing=0></iframe>
-  
+  <!-- <iframe src="http://pbr-wifc-btp.asmirnov.fenrir.immo/menu.html" width="350" height="450" id="navFrame" border="0" frameborder=0 framespacing=0></iframe> -->
+  <iframe src="http://pbr-wifc-asm-test.asmirnov.vps7095.mtu.immo/frontend/web/md/menu" width="350" height="450" id="navFrame" border="0" frameborder=0 framespacing=0></iframe> 
   
   </td>
 

@@ -69,18 +69,94 @@ class MdController extends Controller
     public function actionMenu($id = 0)
     {
 
+        $this->layout='test';
         $tree = $this->generateCommandMenuTree(null, false, $id);
-        return $this->render('menu2.twig' ,[
+        return $this->renderPartial('menu3.twig' ,[
                 'RESULT' => $tree,
                 'username' => '123',
 
                 'ONE_ITEM_MODE' => 0,
-                'PARENT_TITLE' => 'PARENT_TITLE',
+                'PARENT_TITLE' => 'PARENT_TITLE_TEST',
                 'IFRAME_MODE' => 0,
-                'PARENT_ID' => 0,
+                'PARENT_ID' => $id,
                 'PARENT_PARENT_ID' => 0,
                 'PARENT_AUTO_UPDATE' => 0,
             ]);
+    }
+
+    public function processTitle($text, $obj)
+    {
+      return $text;
+    }
+
+    public function actionMenuop($ajax, $op, $item_id, $new_value = null)
+    {
+
+          if ($op=='get_label') {
+           $item = Commands::find()->where(['id' => $item_id])->one();
+           if ($item->ID) {
+            if ($item->TYPE=='custom') {
+             echo $this->processTitle($item->DATA, $this);
+            } else {
+             echo $this->processTitle($item->TITLE, $this);
+            }
+            exit;
+           }
+          }
+
+          if ($op=='get_value')
+          {
+           $item = Commands::find()->where(['id' => $item_id])->one();
+           if ($item->ID) {
+            echo $item->CUR_VALUE;
+            exit;
+           }
+          }
+
+
+          if ($op=='value_changed')
+          {
+           $item = Commands::find()->where(['id' => $item_id])->one();
+           if ($item->ID)
+           {
+              $item->CUR_VALUE = $new_value;
+              $item->save();
+              /*
+              if ($item->LINKED_PROPERTY != '')
+              {
+               $old_value=gg($item->LINKED_OBJECT.'.'.$item->LINKED_PROPERTY);
+               sg($item->LINKED_OBJECT.'.'.$item->LINKED_PROPERTY, $item->CUR_VALUE, 0);
+               //DebMes("setting property ".$item->LINKED_OBJECT."." . $item->LINKED_PROPERTY ." to " . $item->CUR_VALUE);
+              }
+
+              $params=array('VALUE'=>$item->CUR_VALUE);
+              if (isSet($old_value))
+              {
+               $params->OLD_VALUE=$old_value;
+              }
+
+              if ($item->ONCHANGE_METHOD!='')
+              {
+               getObject($item->ONCHANGE_OBJECT)->callMethod($item->ONCHANGE_METHOD, $params);
+               //DebMes("calling method ".$item->ONCHANGE_OBJECT.".".$item->ONCHANGE_METHOD." with ".$item->CUR_VALUE);
+              }
+
+              if ($item->SCRIPT_ID)
+              {
+               //DebMes('Running on_change script #'.$item['SCRIPT_ID']);
+               runScript($item->SCRIPT_ID, $params);
+              }
+              if ($item->CODE)
+              {
+               //DebMes("Running on_change code");
+               eval($item->CODE);
+              }
+              */
+
+           }
+            echo "OK";exit(0);
+          }
+
     }
 
 
